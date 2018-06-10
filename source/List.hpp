@@ -78,7 +78,7 @@ class List
     }
 
     //aufgabe (4.3)
-    
+
     T front() const         
     {
         if ( empty() == true)
@@ -123,6 +123,21 @@ class List
     void pop_back()
     {
 
+    }
+
+    void clear()
+    {
+        if (empty == false)
+        {
+            while (empty == false)
+            {
+                pop_back();
+            }
+        }
+        else
+        {
+            std::cout<<"empty list";  
+        }
     }
 
 
