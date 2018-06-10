@@ -23,7 +23,7 @@ class ListIterator
     // not implemented yet
     // do not forget about the initialiser lists !
     private :
-    ListNode <T >* node ;
+    ListNode <T>* node ;
 };
 
 template <typename T>
@@ -70,12 +70,61 @@ class List
         {
             return false;
         }
-    };
+    }
 
     std::size_t size() const // (4.2)
     {
         return size_ ;
-    };
+    }
+
+    //aufgabe (4.3)
+    
+    T front() const         
+    {
+        if ( empty() == true)
+        {
+            std::cout<<"empty list";
+            return 0;
+        }
+        else
+        {
+            return first_->value;
+        }
+    }
+
+    T back() const         
+    {
+        if ( empty() == true)
+        {
+            std::cout<<"empty list";
+            return 0;
+        }
+        else
+        {
+            return last_->value;    //Wert worauf die Referenz zeigt   
+        }
+    }
+
+    void push_front(T const& value)
+    {
+        if (empty != 0 )
+    }
+
+    void push_back(T const& value)
+    {
+
+    }
+
+    void pop_front()
+    {
+        if (empty != 0 )
+    }
+
+    void pop_back()
+    {
+
+    }
+
 
     private :
     std::size_t size_ ;
