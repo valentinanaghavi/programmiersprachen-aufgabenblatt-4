@@ -117,20 +117,26 @@ class List
     size_{0},
     first_{nullptr},
     last_{nullptr}
-    {}
+    {};
+
+    List(List<T> const& list):     //(4.8)Copy Constructor
+    size_{0},
+    first_{nullptr},
+    last_{nullptr}
+    {
+        for(auto i = list.begin(); i != list.end(); ++i)
+        {
+            push_back(*i);
+        }
+    };
+
 
     ~List()                 // (4.4) Destructor 
     {
         clear();
     }
 
-    List(std::initializer_list<T> list) //initialisierungsliste
-        {
-            for(auto i : list)
-            {
-                push_back(i);
-            }
-};
+
 
     bool empty () const     // (4.2)
     {
@@ -271,6 +277,28 @@ class List
     {		
 			return ListIterator<T>(nullptr);
     }
+
+    //aufgabe(4.9)
+     void insert(ListIterator<T> position, T const& wert)
+     {
+         if (size_ == 0)
+         {
+             push_front(wert);
+         }
+         else
+         {
+            auto p = begin();
+            while (p != position)
+            {
+                p++;
+            }
+            ListNode<T>* node = new ListNode<T> {wert, p -> prev, p};
+            p -> prev -> next = node;
+            p -> prev = node;
+         }
+         size_++;
+     }
+
 
 
     private :
