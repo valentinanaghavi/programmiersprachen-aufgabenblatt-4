@@ -2,6 +2,7 @@
 #define BUW_LIST_HPP
 #include <cstddef>
 #include <list>
+#include <vector>
 #include <iostream>
 // List . hpp
 
@@ -313,13 +314,22 @@ class List
      }
 
         //aufgabe (4.13)
-        void reverse(){
-		List<T> rev{*this}; //Copy list
-		clear(); 
-		for(iterator i = rev.begin(); i!=rev.end(); ++i){
-			push_front(*i);
-		}
-}
+        void reverse()
+        {
+		    List<T> revlist{*this}; //Copy list
+		    clear(); 
+		    for(iterator i = revlist.begin(); i!=revlist.end(); ++i)
+            {
+			    push_front(*i);
+		    }
+        }
+        //zusatzaufgabe(4.11)
+        void copyy()
+        {
+            List<T> listObject{*this};
+            std::vector <T> v;
+            std::copy(listObject.begin(), listObject.end(), v.begin());
+        }
 
 
     private :
