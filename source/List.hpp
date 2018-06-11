@@ -136,6 +136,17 @@ class List
         clear();
     }
 
+    List(List<T>&& list):    //(4.11) Move Constructor = called when an object is initialized, transfer
+    size_(list.size()),
+    first_(list.first_),
+    last_(list.last_)
+    {
+        list.size_ = 0;
+        list.first_ = nullptr;
+        list.last_ = nullptr;
+    }
+    
+
 
 
     bool empty () const     // (4.2)
@@ -268,15 +279,18 @@ class List
             std::cout<<"empty list";  
         }
     }
+
     //aufgabe(4.6)
-    ListIterator<T> begin() const
-    {		
-			return ListIterator<T>(first_);
-	}
-	ListIterator<T> end() const 
-    {		
-			return ListIterator<T>(nullptr);
-    }
+    	iterator begin() const{
+
+		iterator b{first_}; //ListIterator<T>
+		return b; 
+	    }
+
+	    iterator end() const{
+
+		return ListIterator<T>{}; //nullptr
+        }
 
     //aufgabe(4.9)
      void insert(ListIterator<T> position, T const& wert)
@@ -299,6 +313,14 @@ class List
          size_++;
      }
 
+        //aufgabe (4.10)
+        void reverse(){
+		List<T> rev{*this}; //Copy list
+		clear(); 
+		for(iterator i = rev.begin(); i!=rev.end(); ++i){
+			push_front(*i);
+		}
+}
 
 
     private :
@@ -341,4 +363,13 @@ bool operator !=(List<T>const& xs,List<T>const& ys)
 {
     return !(xs == ys);
 }
+
+//aufgabe (4.10)
+template <typename T> List<T> reverse (List<T> const& revlist)
+{
+    List<T> list(revlist);
+    list.reverse();
+    return list;
+}
+
 # endif // #define BUW_LIST_HPP
