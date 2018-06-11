@@ -5,6 +5,10 @@
 #include <iostream>
 #include <list>
 
+int main(int argc, char *argv[])
+{
+  return Catch::Session().run(argc, argv);
+}
 
 
 TEST_CASE("size and empty","[List]")
@@ -123,10 +127,4 @@ TEST_CASE ( " move constructor " , " [ constructor ] " )
     REQUIRE(0==list.size());
     REQUIRE(list.empty());
     REQUIRE(4==list2.size());
-}
-
-
-int main(int argc, char* argv[])
-{
-    return Catch::Session().run(argc,argv);
 }

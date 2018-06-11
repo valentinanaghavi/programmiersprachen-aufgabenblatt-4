@@ -166,32 +166,19 @@ class List
         return size_ ;
     }
 
+
+
     //aufgabe (4.3)
 
     T front() const         
     {
-        if ( empty() == true)
-        {
-            std::cout<<"empty list";
-            return 0;
-        }
-        else
-        {
-            return (*first_).value;
-        }
+        return (*first_).value;
     }
+    
 
     T back() const         
     {
-        if ( empty() == true)
-        {
-            std::cout<<"empty list";
-            return 0;
-        }
-        else
-        {
-            return (*last_).value;    //Wert worauf der Pointer zeigt   
-        }
+        return (*last_).value;    //Wert worauf der Pointer zeigt   
     }
 
     void push_front(T const& v)
@@ -211,10 +198,8 @@ class List
         }
         first_ = node;
         size_++;
-        node = nullptr;
 
     }
-
 
 
     void push_back(T const& v)
@@ -234,14 +219,20 @@ class List
             last_ = node;
         }
         size_++;
-        node = nullptr;
+  
     }
 
     void pop_front()
     {
         if (empty() == true)
         {
-            std::cout<<"empty list";            
+            std::cout<<"empty list ";            
+        }
+        else if (size() == 1)
+        {
+            first_= nullptr;
+            last_ = nullptr;
+            size_--;
         }
         else
         {
@@ -255,7 +246,13 @@ class List
     {
        if (empty() == true)
         {
-            std::cout<<"empty list";            
+            std::cout<<"empty list ";            
+        }
+        else if (size() == 1)
+        {
+            first_= nullptr;
+            last_ = nullptr;
+            size_--;
         }
         else
         {
@@ -264,6 +261,8 @@ class List
             size_--;
         }
     }
+
+
 
     void clear()        //aufgabe 4.4
     {
