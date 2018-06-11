@@ -44,12 +44,12 @@ class ListIterator
     {
         return &(node -> value);
     } 
-    Self& operator++() // iterator++
+    Self& operator++() // iterator++ mit ListIterator<T>
     {
         node = (*node).next;
         return *this;
     }
-    Self operator++( int ) //erst ausgabe des Wertes , folgend i++
+    Self operator++( int ) //erst ausgabe des Wertes , folgend i++ , ListIterator<T>
     {
         Self wert = *this;
         ++(*this);
@@ -190,7 +190,7 @@ class List
         }
         else
         {
-            return (*last_).value;    //Wert worauf die Referenz zeigt   
+            return (*last_).value;    //Wert worauf der Pointer zeigt   
         }
     }
 
@@ -313,7 +313,7 @@ class List
          size_++;
      }
 
-        //aufgabe (4.10)
+        //aufgabe (4.13)
         void reverse(){
 		List<T> rev{*this}; //Copy list
 		clear(); 

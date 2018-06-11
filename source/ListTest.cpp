@@ -3,6 +3,7 @@
 #include "catch.hpp"
 #include "List.hpp"
 #include <iostream>
+#include <list>
 
 
 
@@ -96,6 +97,19 @@ TEST_CASE ( " copy constructor " , " [ constructor ] " )
     list.push_front(4);
     List<int>list2{list};
     REQUIRE(list==list2);
+}
+
+TEST_CASE ( " reverse " , " [ reverse ] " )
+{
+    List<int>list;
+    list.push_back(1);
+    list.push_back(2);
+    list.push_back(3);
+    list.push_back(4);
+    list.reverse();
+    REQUIRE( list.front()==4 );
+    REQUIRE( list.back()==1 );
+
 }
 
 TEST_CASE ( " move constructor " , " [ constructor ] " )
